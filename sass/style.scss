@@ -72,6 +72,14 @@ img {
   width: 850px;
   max-width: 100%;
   margin: 0 auto;
+
+  @include mq(sm) {
+    padding: 0 10px;
+  }
+
+  @include mq(tab) {
+    padding: 0 40px;
+  }
 }
 
 .util-title {
@@ -80,6 +88,11 @@ img {
   display: inline-block;
   letter-spacing: .1em;
   position: relative;
+  margin-top: 90px;
+
+  @include mq(sm) {
+    margin-top: 60px;
+  }
 
   &::after {
     position: absolute;
@@ -97,6 +110,15 @@ img {
 ==================================================================*/
 .header {
   padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  z-index: 100;
+  background: rgba($color: #fff, $alpha: .7);
+
+  @include mq(sm) {
+    height: 70px;
+  }
 }
 
 .header__inner {
@@ -104,19 +126,37 @@ img {
   align-items: center;
   h1 {
     display: inline-block;
-    background: #393E46;
+    background: red;
     color: #fff;
     padding: 10px 20px;
     font-size: 20px;
     font-weight: bold;
+
+    @include mq(sm) {
+      font-size: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
   }
 
   ul {
     margin-left: auto;
     display: flex;
+
+    @include mq(sm) {
+      margin-left: 20px;
+    }
     li {
       &:last-child {
         margin-left: 30px;
+
+        @include mq(sm) {
+          margin-left: 20px;
+        }
+      }
+      a {
+        color: $color-text;
+        font-weight: bold;
       }
     }
   }
@@ -127,6 +167,12 @@ img {
 ==================================================================*/
 
 .main-visual {
+  position: relative;
+  padding-top: 75px;
+
+  @include mq(sm) {
+    padding-top: 70px;
+  }
   img {
     width: 100%;
     height: 600px;
@@ -134,6 +180,48 @@ img {
   }
 }
 
+.main-visual__message {
+  position: absolute;
+  top: 200px;
+  left: 50px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgba($color: #000000, $alpha: .5);
+  padding: 50px;
+  line-height: 1;
+
+  @include mq(tab) {
+    width: 60%;
+    top: 430px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 50px 50px;
+  }
+  
+  p { 
+    border-bottom: 2px solid #fff;
+    @include mq(tab) {
+      margin-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  .main-visual__footer {
+    margin: 30px auto 0;
+    text-align: center;
+  }
+  .btn {
+    color: #fff;
+    border: 1px solid #fff;
+    font-size: 16px;
+    display: inline-block;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+  }
+}
 /*=================================================================
 # main
 ==================================================================*/
@@ -147,6 +235,61 @@ img {
   text-align: center;
 }
 
+.about__inner {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+
+  @include mq(sm) {
+    padding: 0 40px;
+  }
+}
+
+.about__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+
+  @include mq(sm) {
+    display: block;
+    margin-top: 30px;
+  }
+}
+
+.about__picture {
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 30px;
+
+    @include mq(sm) {
+      margin-right: 0;
+    }
+  }
+}
+
+.about__message {
+  text-align: left;
+}
+
+.my-name {
+  font-size: 18px;
+  font-weight: bold;
+
+  @include mq(sm) {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+  }
+}
+
+.description {
+  @include mq(sm) {
+    margin-top: 10px;
+  }
+}
 /*=================================================================
 # bicycle
 ==================================================================*/
@@ -154,11 +297,114 @@ img {
   text-align: center;
 }
 
+.bicycle__items {
+  display: flex;
+  margin-top: 60px;
+
+  @include mq(sm) {
+    display: block;
+  }
+}
+
+.bicycle__item {
+  position: relative;
+  border: 1px solid #ddd;
+  padding-bottom: 20px;
+  box-shadow: 0 3px 6px rgba($color: #000000, $alpha: .1);
+
+  & + & {
+    margin-left: 20px;
+
+    @include mq(sm) {
+      margin: 30px 0 0 0;
+    }
+  }
+  &:first-child {
+    &::after {
+      position: absolute;
+      content: "new";
+      top: 0;
+      left: 0;
+      background: red;
+      color: #fff;
+      display: inline-block;
+      padding: 2px 6px;
+    }
+  }
+  // &:nth-child(2) {
+  //   &::after {
+  //     position: absolute;
+  //     content: "おすすめ";
+  //     top: 0;
+  //     left: 0;
+  //     background: red;
+  //     color: #fff;
+  //     display: inline-block;
+  //     padding: 2px 5px;
+  //   }
+  // }
+}
+
+.bicycle__picture {
+  overflow: hidden;
+  img {
+    width: 270px;
+    max-width: 100%;
+    height: 200px;
+    transition: all .4s;
+
+    @include mq(sm) {
+      width: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.1);/* 拡大 */
+    }
+  }
+}
+
+.bicycle__title {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.bicycle__text {
+  margin-top: 5px;
+}
+
+.bicycle__footer {
+  margin-top: 10px;
+  .btn {
+    color: #fff;
+    background: $color-text;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: all .4s;
+
+    @include mq(sm) {
+      padding: 10px 80px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      background: #fff;
+      color: #000;
+      border: 1px solid #000;
+    }
+  }
+}
 /*=================================================================
 # footer
 ==================================================================*/
 .footer {
   text-align: center;
+  padding: 10px 0;
+
+  @include mq(sm) {
+    padding: 20px 0;
+  }
 }
 
 .copyright {
