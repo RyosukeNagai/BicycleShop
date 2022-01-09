@@ -396,15 +396,117 @@ img {
   }
 }
 /*=================================================================
+# shop
+==================================================================*/
+.shop {
+  width: 100%;
+  margin: 90px auto 0;
+  position: relative;
+
+  @include mq(sm) {
+    margin: 60px auto 0;
+  }
+}
+
+.shop__picture {
+  img {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.shop__message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba($color: #fff, $alpha: .7);
+  text-align: center;
+  padding: 30px;
+
+  @include mq(sm) {
+    width: 80%;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+
+    @include mq(sm) {
+      font-size: 14px;
+    }
+  }
+  p {
+    font-size: 26px;
+    font-weight: bold;
+
+    @include mq(sm) {
+      font-size: 20px;
+    }
+  }
+}
+
+.shop__footer {
+  margin-top: 10px;
+  a {
+    background: red;
+    color: #fff;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 5px;
+    transition: all .4s;
+
+    @include mq(sm) {
+      width: 150px;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      top: 22px;
+      right: 50px;
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      transform: rotate(-45deg);
+      transition: all .2s;
+
+      @include mq(sm) {
+        top: 16px;
+        right: 30px;
+      }
+    }
+
+    &:hover {
+      background: #d50303;
+      font-size: 20px;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+}
+/*=================================================================
 # footer
 ==================================================================*/
 .footer {
   background: #0F1120;
   color: #6E5040;
   padding: 50px 0;
+  margin-top: 90px;
 
   @include mq(sm) {
     text-align: center;
+    margin-top: 60px;
   }
 }
 
@@ -450,6 +552,9 @@ img {
   margin-top: 10px;
   a {
     color: #6E5040;
+    &:hover {
+      color: #5a406e;
+    }
   }
 }
 
@@ -479,6 +584,10 @@ img {
   a {
     font-size: 20px;
     color: #6E5040;
+
+    &:hover {
+      color: #5a406e;
+    }
   }
 }
 
